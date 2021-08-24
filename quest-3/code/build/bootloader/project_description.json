@@ -1,0 +1,20 @@
+{
+    "project_name":       "bootloader",
+    "project_path":       "/Users/aprior/esp/esp-idf/components/bootloader/subproject",
+    "build_dir":          "/Users/aprior/esp/esp-idf/code-examples/i2c-accel/build/bootloader",
+    "config_file":        "/Users/aprior/esp/esp-idf/code-examples/i2c-accel/sdkconfig",
+    "config_defaults":    "",
+    "app_elf":            "bootloader.elf",
+    "app_bin":            "bootloader.bin",
+    "git_revision":       "v4.3-dev-1198-gdabcf236d-dirty",
+    "target":             "esp32",
+    "phy_data_partition": "",
+    "monitor_baud" :      "115200",
+    "monitor_toolprefix": "xtensa-esp32-elf-",
+    "config_environment" : {
+        "COMPONENT_KCONFIGS" : "/Users/aprior/esp/esp-idf/components/efuse/Kconfig;/Users/aprior/esp/esp-idf/components/esp32/Kconfig;/Users/aprior/esp/esp-idf/components/esp_common/Kconfig;/Users/aprior/esp/esp-idf/components/log/Kconfig;/Users/aprior/esp/esp-idf/components/spi_flash/Kconfig",
+        "COMPONENT_KCONFIGS_PROJBUILD" : "/Users/aprior/esp/esp-idf/components/bootloader/Kconfig.projbuild;/Users/aprior/esp/esp-idf/components/esptool_py/Kconfig.projbuild;/Users/aprior/esp/esp-idf/components/partition_table/Kconfig.projbuild"
+    },
+    "build_components" : [ "bootloader", "bootloader_support", "efuse", "esp32", "esp_common", "esp_rom", "esptool_py", "hal", "log", "main", "micro-ecc", "partition_table", "soc", "spi_flash", "xtensa", "" ],
+    "build_component_paths" : [ "/Users/aprior/esp/esp-idf/components/bootloader", "/Users/aprior/esp/esp-idf/components/bootloader_support", "/Users/aprior/esp/esp-idf/components/efuse", "/Users/aprior/esp/esp-idf/components/esp32", "/Users/aprior/esp/esp-idf/components/esp_common", "/Users/aprior/esp/esp-idf/components/esp_rom", "/Users/aprior/esp/esp-idf/components/esptool_py", "/Users/aprior/esp/esp-idf/components/hal", "/Users/aprior/esp/esp-idf/components/log", "/Users/aprior/esp/esp-idf/components/bootloader/subproject/main", "/Users/aprior/esp/esp-idf/components/bootloader/subproject/components/micro-ecc", "/Users/aprior/esp/esp-idf/components/partition_table", "/Users/aprior/esp/esp-idf/components/soc", "/Users/aprior/esp/esp-idf/components/spi_flash", "/Users/aprior/esp/esp-idf/components/xtensa", "" ]
+}

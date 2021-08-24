@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Voting Hype!</title>
+    </head>
+
+<body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        //var flag1 = 0;
+        //var flag2 = 0;
+        //var flag3 = 0;
+        var blueVotes = 0;
+        var redVotes = 0;
+        var counted1 = 0;
+        var counted2 = 0;
+        var counted3 = 0;
+        $(function () {
+            var socket = io();
+            
+            socket.on('fob1', function(fob1){
+                //console.log(fob1);
+                var html = "<table border='1|1'> <p>Fob 0 Activity</p>";
+                    html+="<tr>";
+                        html+="<td>"+"Date and Time"+"</td>";
+                        html+="<td>"+"Fob ID"+"</td>";
+                        html+="<td>"+"Vote"+"</td>";
+                        html+="</tr>";
+                //for (var i = 0; i < fob1.time.length; i++) {
+                    
+                        //console.log("HELLOOOOOOOOOOO");
+                        html+="<tr>";
+                        html+="<td>"+fob1.time+"</td>";
+                        html+="<td>"+fob1.fobID+"</td>";
+                        html+="<td>"+fob1.vote+"</td>";
+                        html+="</tr>";
+                    
+                    //}
+                html+="</table>";
+                document.getElementById("box").innerHTML = html;
+                if (fob1.vote == 'B' && counted1 == 0){
+                        blueVotes++;
+                        counted1 = 1;
+                    }
+                else if (fob1.vote == 'R'  && counted1 == 0){
+                        redVotes++;
+                        counted1 = 1;
+                    }   
+                    
+                });
+
+                socket.on('fob2', function(fob2){
+                //console.log(fob2);
+                var html = "<table border='1|1'> <p>Fob 1 Activity</p>";
+                    html+="<tr>";
+                        html+="<td>"+"Date and Time"+"</td>";
+                        html+="<td>"+"Fob ID"+"</td>";
+                        html+="<td>"+"Vote"+"</td>";
+                        html+="</tr>";
+                //for (var i = 0; i < fob2.time.length; i++) {
+                    
+                        html+="<tr>";
+                        html+="<td>"+fob2.time+"</td>";
+                        html+="<td>"+fob2.fobID+"</td>";
+                        html+="<td>"+fob2.vote+"</td>";
+                        html+="</tr>";
+                    
+                    //}
+                html+="</table>";
+                document.getElementById("box2").innerHTML = html;
+                    
+                
+                if (fob2.vote == 'B'  && counted2 == 0){
+                        blueVotes++;
+                        counted2 = 1;
+                    }
+                else if (fob2.vote == 'R' && counted2 == 0){
+                        redVotes++;
+                        counted2 = 1;
+                    } 
+                });
+                
+                socket.on('fob3', function(fob3){
+                //console.log(fob3);
+                var html = "<table border='1|1'> <p>Fob 2 Activity</p>";
+                    html+="<tr>";
+                        html+="<td>"+"Date and Time"+"</td>";
+                        html+="<td>"+"Fob ID"+"</td>";
+                        html+="<td>"+"Vote"+"</td>";
+                        html+="</tr>";
+                //for (var i = 0; i < fob3.time.length; i++) {
+                    
+                        html+="<tr>";
+                        html+="<td>"+fob3.time+"</td>";
+                        html+="<td>"+fob3.fobID+"</td>";
+                        html+="<td>"+fob3.vote+"</td>";
+                        html+="</tr>";
+                        
+                   // }
+                html+="</table>";
+                document.getElementById("box3").innerHTML = html;
+                if (fob3.vote == 'B' && counted3 == 0){
+                        blueVotes++;
+                        counted3 = 1;
+                    }
+                else if (fob3.vote == 'R' && counted3 == 0){
+                        redVotes++;
+                        counted3 = 1;
+                    }      
+                        
+                });
+
+                socket.on('fob4', function(fob4){
+                //console.log(fob3);
+                var html = "<table border='1|1'> <p>Fob 3 Activity</p>";
+                    html+="<tr>";
+                        html+="<td>"+"Date and Time"+"</td>";
+                        html+="<td>"+"Fob ID"+"</td>";
+                        html+="<td>"+"Vote"+"</td>";
+                        html+="</tr>";
+                //for (var i = 0; i < fob3.time.length; i++) {
+                    
+                        html+="<tr>";
+                        html+="<td>"+fob4.time+"</td>";
+                        html+="<td>"+fob4.fobID+"</td>";
+                        html+="<td>"+fob4.vote+"</td>";
+                        html+="</tr>";
+                        
+                   // }
+                html+="</table>";
+                document.getElementById("box4").innerHTML = html;
+                });
+
+                socket.on('fob5', function(fob5){
+                //console.log(fob3);
+                var html = "<table border='1|1'> <p>Fob 4 Activity</p>";
+                    html+="<tr>";
+                        html+="<td>"+"Date and Time"+"</td>";
+                        html+="<td>"+"Fob ID"+"</td>";
+                        html+="<td>"+"Vote"+"</td>";
+                        html+="</tr>";
+                //for (var i = 0; i < fob3.time.length; i++) {
+                    
+                        html+="<tr>";
+                        html+="<td>"+fob5.time+"</td>";
+                        html+="<td>"+fob5.fobID+"</td>";
+                        html+="<td>"+fob5.vote+"</td>";
+                        html+="</tr>";
+                        
+                   // }
+                html+="</table>";
+                document.getElementById("box5").innerHTML = html;
+                });
+
+                socket.on('fob6', function(fob6){
+                //console.log(fob3);
+                var html = "<table border='1|1'> <p>Fob 5 Activity</p>";
+                    html+="<tr>";
+                        html+="<td>"+"Date and Time"+"</td>";
+                        html+="<td>"+"Fob ID"+"</td>";
+                        html+="<td>"+"Vote"+"</td>";
+                        html+="</tr>";
+                //for (var i = 0; i < fob3.time.length; i++) {
+                    
+                        html+="<tr>";
+                        html+="<td>"+fob6.time+"</td>";
+                        html+="<td>"+fob6.fobID+"</td>";
+                        html+="<td>"+fob6.vote+"</td>";
+                        html+="</tr>";
+                        
+                   // }
+                html+="</table>";
+                document.getElementById("box6").innerHTML = html;
+                });
+
+                socket.on('fob7', function(fob7){
+                //console.log(fob3);
+                var html = "<table border='1|1'> <p>Fob 6 Activity</p>";
+                    html+="<tr>";
+                        html+="<td>"+"Date and Time"+"</td>";
+                        html+="<td>"+"Fob ID"+"</td>";
+                        html+="<td>"+"Vote"+"</td>";
+                        html+="</tr>";
+                //for (var i = 0; i < fob3.time.length; i++) {
+                    
+                        html+="<tr>";
+                        html+="<td>"+fob7.time+"</td>";
+                        html+="<td>"+fob7.fobID+"</td>";
+                        html+="<td>"+fob7.vote+"</td>";
+                        html+="</tr>";
+                        
+                   // }
+                html+="</table>";
+                document.getElementById("box7").innerHTML = html;
+                });
+
+                socket.on('fob8', function(fob8){
+                //console.log(fob3);
+                var html = "<table border='1|1'> <p>Fob 7 Activity</p>";
+                    html+="<tr>";
+                        html+="<td>"+"Date and Time"+"</td>";
+                        html+="<td>"+"Fob ID"+"</td>";
+                        html+="<td>"+"Vote"+"</td>";
+                        html+="</tr>";
+                //for (var i = 0; i < fob3.time.length; i++) {
+                    
+                        html+="<tr>";
+                        html+="<td>"+fob8.time+"</td>";
+                        html+="<td>"+fob8.fobID+"</td>";
+                        html+="<td>"+fob8.vote+"</td>";
+                        html+="</tr>";
+                        
+                   // }
+                html+="</table>";
+                document.getElementById("box8").innerHTML = html;
+                });
+
+                socket.on('fob9', function(fob9){
+                //console.log(fob3);
+                var html = "<table border='1|1'> <p>Fob 8 Activity</p>";
+                    html+="<tr>";
+                        html+="<td>"+"Date and Time"+"</td>";
+                        html+="<td>"+"Fob ID"+"</td>";
+                        html+="<td>"+"Vote"+"</td>";
+                        html+="</tr>";
+                //for (var i = 0; i < fob3.time.length; i++) {
+                    
+                        html+="<tr>";
+                        html+="<td>"+fob9.time+"</td>";
+                        html+="<td>"+fob9.fobID+"</td>";
+                        html+="<td>"+fob9.vote+"</td>";
+                        html+="</tr>";
+                        
+                   // }
+                html+="</table>";
+                document.getElementById("box9").innerHTML = html;
+                });
+                
+        });
+       
+    </script>
+    <p>Blue Votes:</p>
+    <p id='blueVoteNum' ></p> 
+    <p>Red Votes:</p>
+    <p id='redVoteNum' ></p> 
+    <button onclick="countVotes()">Count the Votes</button>
+    <button id='clearVotes'>Delete the Ballots</button>
+    <div id= "box"></div>
+    <div id= "box2"></div>
+    <div id= "box3"></div>
+    <div id= "box4"></div>
+    <div id= "box5"></div>
+    <div id= "box6"></div>
+    <div id= "box7"></div>
+    <div id= "box8"></div>
+    <div id= "box9"></div>
+    <script>
+        // import { countVotes } from "./votes.js";
+        function countVotes() {
+            document.getElementById("blueVoteNum").innerHTML = blueVotes;
+            document.getElementById("redVoteNum").innerHTML = redVotes;
+        }
+    </script>
+    <!-- <script src="./clear.js"></script> -->
+
+</body>
+
+</html>

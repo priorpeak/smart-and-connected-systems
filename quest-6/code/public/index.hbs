@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Pet Feeder</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+  <div class="main-content">
+    <p>Bird's Eye View</p>
+    <img src="http://team5ec444.ddns.net:8081"></img>
+    <div>
+      <div>
+        <h1>Food Temperature</h1>
+        <p id='temp'></p>
+      </div>
+      <div>
+        <h1>Lidar Distance</h1>
+        <p id='lidar'></p>
+      </div>
+      <div>
+        <h1>Ultrasonic Distance</h1>
+        <p id='ultrasonic'></p>
+      </div>
+    </div>
+    <script>
+      //var temperature = document.querySelector('#temp');
+      //var accelerometerX = document.querySelector('#accelx');
+      //var accelerometerZ = document.querySelector('#accelz');
+      //var accelerometerY = document.querySelector('#accely');
+      //var accelerometerRoll = document.querySelector('#accelr');
+      //var accelerometerPitch = document.querySelector('#accelp');
+      //   let thermistorData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      //   let irData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      //   let ultrasonicData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+      window.onload = function () {
+      }
+
+      function fetchData() {
+        $.ajax({
+          url: "/data1",
+          async: false,
+          success: function (result) {
+
+            let thermistorData = result.data;
+            if (thermistorData) {
+              document.getElementById('temp').innerHTML = thermistorData;
+            }
+          },
+        });
+
+        $.ajax({
+          url: "/data2",
+          async: false,
+          success: function (result) {
+            let lidarData = result.data;
+            if (lidarData) {
+              document.getElementById('lidar').innerHTML = lidarData;
+            }
+          },
+        });
+
+        $.ajax({
+          url: "/data3",
+          async: false,
+          success: function (result) {
+            let ultrasonicData = result.data;
+            if (ultrasonicData) {
+              document.getElementById('ultrasonic').innerHTML = ultrasonicData;
+            }
+          },
+        });
+
+        $.ajax({
+          url: "/data4",
+          async: false,
+          success: function (result) {
+            let dogMotion = result.data;
+            if (dogMotion) {
+                window.alert("Dog Motion Detected, Feeding Dog");
+            }
+          },
+        });
+
+        $.ajax({
+          url: "/data5",
+          async: false,
+          success: function (result) {
+            let catMotion = result.data;
+            if (catMotion) {
+                window.alert("Cat Motion Detected, Feeding Cat!");
+            }
+          },
+        });
+      }
+      setInterval(fetchData, 500);
+    </script>
+    <div>
+      <p>CAT</p>
+      <button id='catButton'>feed</button>
+      <p>DOG</p>
+      <button id='dogButton'>feed</button>
+    </div>
+  </div>
+  <script src="./client.js"></script>
+</body>
+
+</html>

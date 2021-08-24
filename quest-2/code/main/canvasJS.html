@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    let thermistorData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let irData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let ultrasonicData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    window.onload = function () {
+      $.ajax({
+        url: "/data1",
+        async: false,
+        success: function (result) {
+          // chartSettings = result;
+          // console.log(result);
+          thermistorData = result.slice(0);
+          // console.log(thermistorData);
+        },
+      });
+
+      $.ajax({
+        url: "/data2",
+        async: false,
+        success: function (result) {
+          // chartSettings = result;
+          // console.log(result);
+          irData = result.slice(0);
+        },
+      });
+
+      $.ajax({
+        url: "/data3",
+        async: false,
+        success: function (result) {
+          // chartSettings = result;
+          // console.log(result);
+          ultrasonicData = result.slice(0);
+        },
+      });
+      document.getElementById("thermistor1").innerHTML = thermistorData[0];
+      document.getElementById("thermistor2").innerHTML = thermistorData[1];
+      document.getElementById("thermistor3").innerHTML = thermistorData[2];
+      document.getElementById("thermistor4").innerHTML = thermistorData[3];
+      document.getElementById("thermistor5").innerHTML = thermistorData[4];
+      document.getElementById("thermistor6").innerHTML = thermistorData[5];
+      document.getElementById("thermistor7").innerHTML = thermistorData[6];
+      document.getElementById("thermistor8").innerHTML = thermistorData[7];
+      document.getElementById("thermistor9").innerHTML = thermistorData[8];
+      document.getElementById("thermistor10").innerHTML = thermistorData[9];
+
+      document.getElementById("irData1").innerHTML = irData[0];
+      document.getElementById("irData2").innerHTML = irData[1];
+      document.getElementById("irData3").innerHTML = irData[2];
+      document.getElementById("irData4").innerHTML = irData[3];
+      document.getElementById("irData5").innerHTML = irData[4];
+      document.getElementById("irData6").innerHTML = irData[5];
+      document.getElementById("irData7").innerHTML = irData[6];
+      document.getElementById("irData8").innerHTML = irData[7];
+      document.getElementById("irData9").innerHTML = irData[8];
+      document.getElementById("irData10").innerHTML = irData[9];
+
+      document.getElementById("ultrasonicData1").innerHTML =
+        ultrasonicData[0];
+      document.getElementById("ultrasonicData2").innerHTML =
+        ultrasonicData[1];
+      document.getElementById("ultrasonicData3").innerHTML =
+        ultrasonicData[2];
+      document.getElementById("ultrasonicData4").innerHTML =
+        ultrasonicData[3];
+      document.getElementById("ultrasonicData5").innerHTML =
+        ultrasonicData[4];
+      document.getElementById("ultrasonicData6").innerHTML =
+        ultrasonicData[5];
+      document.getElementById("ultrasonicData7").innerHTML =
+        ultrasonicData[6];
+      document.getElementById("ultrasonicData8").innerHTML =
+        ultrasonicData[7];
+      document.getElementById("ultrasonicData9").innerHTML =
+        ultrasonicData[8];
+      document.getElementById("ultrasonicData10").innerHTML =
+        ultrasonicData[9];
+
+      // Create a new CanvasJS chart
+      var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        title: {
+          text: "Thermistor : Ultrasonic : IR Rangefinder",
+        },
+        axisX: {
+          interval: 1,
+          intervalType: "Sensor Data",
+        },
+        axisY: {
+          title: "Temperature / Distance",
+          prefix: "",
+        },
+        legend: {
+          cursor: "pointer",
+          fontSize: 16,
+          itemclick: toggleDataSeries,
+        },
+        toolTip: {
+          shared: true,
+        },
+        data: [
+          {
+            name: "Thermistor",
+            type: "spline",
+            yValueFormatString: "#C",
+            showInLegend: true,
+            // Pass in thermistorData values (Updated dynamically using ajax function above)
+            dataPoints: [
+              { x: 1, y: Number(thermistorData[0]) },
+              { x: 2, y: Number(thermistorData[1]) },
+              { x: 3, y: Number(thermistorData[2]) },
+              { x: 4, y: Number(thermistorData[3]) },
+              { x: 5, y: Number(thermistorData[4]) },
+              { x: 6, y: Number(thermistorData[5]) },
+              { x: 7, y: Number(thermistorData[6]) },
+              { x: 8, y: Number(thermistorData[7]) },
+              { x: 9, y: Number(thermistorData[8]) },
+              { x: 10, y: Number(thermistorData[9]) },
+            ],
+          },
+          {
+            name: "Infared Sensor",
+            type: "spline",
+            yValueFormatString: "#m",
+            showInLegend: true,
+            // Pass in IR Rangefinder data (Updated dynamically using ajax function above)
+            dataPoints: [
+              { x: 1, y: Number(irData[0]) },
+              { x: 2, y: Number(irData[1]) },
+              { x: 3, y: Number(irData[2]) },
+              { x: 4, y: Number(irData[3]) },
+              { x: 5, y: Number(irData[4]) },
+              { x: 6, y: Number(irData[5]) },
+              { x: 7, y: Number(irData[6]) },
+              { x: 8, y: Number(irData[7]) },
+              { x: 9, y: Number(irData[8]) },
+              { x: 10, y: Number(irData[9]) },
+            ],
+          },
+          {
+            name: "Ultrasonic Senor",
+            type: "spline",
+            yValueFormatString: "#m",
+            showInLegend: true,
+            // Pass in ultrasonic data (Updated dynamically using ajax function above)
+            dataPoints: [
+              { x: 1, y: Number(ultrasonicData[0]) },
+              { x: 2, y: Number(ultrasonicData[1]) },
+              { x: 3, y: Number(ultrasonicData[2]) },
+              { x: 4, y: Number(ultrasonicData[3]) },
+              { x: 5, y: Number(ultrasonicData[4]) },
+              { x: 6, y: Number(ultrasonicData[5]) },
+              { x: 7, y: Number(ultrasonicData[6]) },
+              { x: 8, y: Number(ultrasonicData[7]) },
+              { x: 9, y: Number(ultrasonicData[8]) },
+              { x: 10, y: Number(ultrasonicData[9]) },
+            ],
+          },
+        ],
+      });
+      chart.render();
+
+      function toggleDataSeries(e) {
+        if (
+          typeof e.dataSeries.visible === "undefined" ||
+          e.dataSeries.visible
+        ) {
+          e.dataSeries.visible = false;
+        } else {
+          e.dataSeries.visible = true;
+        }
+        chart.render();
+      }
+    };
+      // $("#thermistor").val(thermistorData);
+      // $("#thermistor").append(thermistorData[0]);
+  </script>
+</head>
+
+<body>
+  <div id="chartContainer" style="height: 300px; width: 100%"></div>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+  <!-- Display sensor data to the front page -->
+  <p><b>Temperature Data</b></p>
+  <p id="thermistor1"></p>
+  <p id="thermistor2"></p>
+  <p id="thermistor3"></p>
+  <p id="thermistor4"></p>
+  <p id="thermistor5"></p>
+  <p id="thermistor6"></p>
+  <p id="thermistor7"></p>
+  <p id="thermistor8"></p>
+  <p id="thermistor9"></p>
+  <p id="thermistor10"></p>
+
+  <p><b>IR Data</b></p>
+  <p id="irData1"></p>
+  <p id="irData2"></p>
+  <p id="irData3"></p>
+  <p id="irData4"></p>
+  <p id="irData5"></p>
+  <p id="irData6"></p>
+  <p id="irData7"></p>
+  <p id="irData8"></p>
+  <p id="irData9"></p>
+  <p id="irData10"></p>
+
+  <p><b>Ultrasonic Data</b></p>
+  <p id="ultrasonicData1"></p>
+  <p id="ultrasonicData2"></p>
+  <p id="ultrasonicData3"></p>
+  <p id="ultrasonicData4"></p>
+  <p id="ultrasonicData5"></p>
+  <p id="ultrasonicData6"></p>
+  <p id="ultrasonicData7"></p>
+  <p id="ultrasonicData8"></p>
+  <p id="ultrasonicData9"></p>
+  <p id="ultrasonicData10"></p>
+</body>
+
+</html>

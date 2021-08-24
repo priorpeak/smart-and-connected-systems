@@ -1,0 +1,6 @@
+source "/Users/aprior/esp/esp-idf/components/app_update/Kconfig.projbuild"
+source "/Users/aprior/esp/esp-idf/components/bootloader/Kconfig.projbuild"
+source "/Users/aprior/esp/esp-idf/components/esptool_py/Kconfig.projbuild"
+source "/Users/aprior/esp/esp-idf/components/partition_table/Kconfig.projbuild"
+source "/Users/aprior/esp/esp-idf/examples/common_components/protocol_examples_common/Kconfig.projbuild"
+source "/Users/aprior/esp/esp-idf/examples/protocols/sockets/udp_server/main/Kconfig.projbuild"
